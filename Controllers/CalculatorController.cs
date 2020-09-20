@@ -7,6 +7,24 @@ namespace TestApi.Controllers
     [Route("[controller]")]
     public class CalculatorController : ControllerBase
     {
+
+        [HttpPost]
+        public CalculatorResult Calculate([FromForm] double first, [FromForm] double second, [FromForm] string opt)
+        {
+            switch (opt)
+            {
+                case "+":
+                    return Add(first, second);
+                case "-":
+                    return Sub(first, second);
+                case "*":
+                    return Mutiple(first, second);
+                case "/":
+                    return Division(first, second);
+            }
+            return null;
+        }
+
         [HttpGet("{first}/{second}")]
         public CalculatorResult[] Info(double first, double second)
         {
@@ -38,6 +56,9 @@ namespace TestApi.Controllers
         [HttpGet("{first}/{second}/Division")]
         public CalculatorResult Division(double first, double second)
         {
+            if (second == 0)
+                return new CalculatorResult { type = "divisor cannot be zero"};
+
             CalculatorResult result = new CalculatorResult { type = "Division", result = first / second };
             return result;
         }
