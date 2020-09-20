@@ -2,8 +2,11 @@
 .net core 3.1
 
 ## set up webapi
+
 git clone https://github.com/neil0118/calculatorWebApi.git
+
 cd calculatorWebApi
+
 dotnet run 
 
 
