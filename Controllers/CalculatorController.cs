@@ -18,7 +18,7 @@ namespace TestApi.Controllers
                 case "-":
                     return Sub(first, second);
                 case "*":
-                    return Mutiple(first, second);
+                    return Multiple(first, second);
                 case "/":
                     return Division(first, second);
             }
@@ -28,7 +28,7 @@ namespace TestApi.Controllers
         [HttpGet("{first}/{second}")]
         public CalculatorResult[] Info(double first, double second)
         {
-            CalculatorResult[] result = { Add(first, second), Sub(first, second), Mutiple(first, second), Division(first, second) };
+            CalculatorResult[] result = { Add(first, second), Sub(first, second), Multiple(first, second), Division(first, second) };
             return result;
         }
 
@@ -46,10 +46,10 @@ namespace TestApi.Controllers
             return result;
         }
 
-        [HttpGet("{first}/{second}/Mutiple")]
-        public CalculatorResult Mutiple(double first, double second)
+        [HttpGet("{first}/{second}/Multiple")]
+        public CalculatorResult Multiple(double first, double second)
         {
-            CalculatorResult result = new CalculatorResult { type = "Mutiple", result = first * second };
+            CalculatorResult result = new CalculatorResult { type = "Multiple", result = first * second };
             return result;
         }
 
